@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Gifts
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: af458cc3c9871424b8597ad74dc4e914, type: 3}
+    - {fileID: 2800000, guid: 780bf262eb972ec49ba53e9d424fd2fe, type: 3}
+    - {fileID: 2800000, guid: 73d9c3a5a833b754aa3b1b26b340d255, type: 3}
+    - {fileID: 2800000, guid: 27a1b610856b5f2429ee40ce17408e14, type: 3}
+    - {fileID: 2800000, guid: 8fdf6f75a58d1254093053f25402b853, type: 3}
+    - {fileID: 2800000, guid: 1f0a2a12648c3c64db06741cf008591e, type: 3}
+    - {fileID: 2800000, guid: d261eb08e11147746bd991c9ec02e71a, type: 3}
+    - {fileID: 2800000, guid: 65815bc338f552949b97f82c67c5107f, type: 3}
+    - {fileID: 2800000, guid: fef59b958d2c7b04a953bb102c8d3aae, type: 3}
+    - {fileID: 2800000, guid: a49fb9f5b8ded614ab89b8ce5d528453, type: 3}
+    - {fileID: 2800000, guid: b51079097136e8642832c5e048c27bc3, type: 3}
+    - {fileID: 2800000, guid: 6847e59bb6123fd4b9edc954447502c9, type: 3}
+    - {fileID: 2800000, guid: ebb77f4dd4670734e95254bd6a177c13, type: 3}
+    - {fileID: 2800000, guid: 1b5127d4e057d4b4daf433b0ceba5852, type: 3}
+    - {fileID: 2800000, guid: 0463111374d6a1d43b6ebc9d2713b2dd, type: 3}
+    - {fileID: 2800000, guid: 06c85e6a51216984e951d9cff36141d6, type: 3}
+    - {fileID: 2800000, guid: 564d50f68d29d8241aa48ecbf361f986, type: 3}
+    - {fileID: 2800000, guid: 7bad3d445735bb345b7f1545df5155fe, type: 3}
+    - {fileID: 2800000, guid: ac6ef5707fbdb5f4f9488b7f9d23ecff, type: 3}
+    - {fileID: 2800000, guid: 454808f9473acc5499a849e4ea328679, type: 3}
+    - {fileID: 2800000, guid: 3caa0e5350f74664fbbb25ed4cc296d1, type: 3}
+    - {fileID: 2800000, guid: 81240e04c3316544991ea99c0c5ce5d8, type: 3}
+    - {fileID: 2800000, guid: d79d4e2b4a26ef74cb6dcfafef58c6cc, type: 3}
+    - {fileID: 2800000, guid: 2b11e7fb0cf9bff458b8ada39cc5db76, type: 3}
+    - {fileID: 2800000, guid: 0f5e21cd11396e84eb384464d4ddda8d, type: 3}
+    - {fileID: 2800000, guid: 830201fa49b6b5c4d979bb00d5a73d7b, type: 3}
+    - {fileID: 2800000, guid: 471da93ec3bfd3f409227009d60d2888, type: 3}
+    - {fileID: 2800000, guid: fcd30351c3281e943903846bdd72d133, type: 3}
+    - {fileID: 2800000, guid: 77d901834cb83ac41a87c357641826ad, type: 3}
+    - {fileID: 2800000, guid: c11bae73799e2da4a891961eb31f7196, type: 3}
+    - {fileID: 2800000, guid: 023219535a0f79644a33fad9dfe66fb5, type: 3}
+    - {fileID: 2800000, guid: 1b471fdb2c9dd754d97d426f119acaca, type: 3}
+    - {fileID: 2800000, guid: 4b5688755289ae54491b1710dc733b74, type: 3}
+    - {fileID: 2800000, guid: 68bbec26831d2fc4fabbd5633824e11a, type: 3}
+    - {fileID: 2800000, guid: 1c0a5ef6836ee134b9819f55e04c639e, type: 3}
+    - {fileID: 2800000, guid: 1306da1a771fe7040b408bf620b63468, type: 3}
+    - {fileID: 2800000, guid: f95010ef4f98d4a43a1e505ef03b82b2, type: 3}
+    - {fileID: 2800000, guid: 5905e5911f3eead41a6f53b89b6b03b2, type: 3}
+    - {fileID: 2800000, guid: fd1ff2971dd04304cac8f9f829d2a1a8, type: 3}
+    - {fileID: 2800000, guid: ff5a0d1bf43d37a44bf3146670e07b66, type: 3}
+    - {fileID: 2800000, guid: 8d3e3031425c8604e801e80885df87e3, type: 3}
+    - {fileID: 2800000, guid: ef9d645e27be23540a74d03312cda7f4, type: 3}
+    - {fileID: 2800000, guid: c712b2c6c05d57c46b8b6114e4566ecf, type: 3}
+    - {fileID: 2800000, guid: fa45e6dd9f2458d4d98768ebd4c86978, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a49fb9f5b8ded614ab89b8ce5d528453, type: 3}
+  - {fileID: 21300000, guid: 6847e59bb6123fd4b9edc954447502c9, type: 3}
+  - {fileID: 21300000, guid: b51079097136e8642832c5e048c27bc3, type: 3}
+  - {fileID: 21300000, guid: 1b5127d4e057d4b4daf433b0ceba5852, type: 3}
+  - {fileID: 21300000, guid: ebb77f4dd4670734e95254bd6a177c13, type: 3}
+  - {fileID: 21300000, guid: 0463111374d6a1d43b6ebc9d2713b2dd, type: 3}
+  - {fileID: 21300000, guid: 5905e5911f3eead41a6f53b89b6b03b2, type: 3}
+  - {fileID: 21300000, guid: 4b5688755289ae54491b1710dc733b74, type: 3}
+  - {fileID: 21300000, guid: 1b471fdb2c9dd754d97d426f119acaca, type: 3}
+  - {fileID: 21300000, guid: 564d50f68d29d8241aa48ecbf361f986, type: 3}
+  - {fileID: 21300000, guid: fcd30351c3281e943903846bdd72d133, type: 3}
+  - {fileID: 21300000, guid: 454808f9473acc5499a849e4ea328679, type: 3}
+  - {fileID: 21300000, guid: fa45e6dd9f2458d4d98768ebd4c86978, type: 3}
+  - {fileID: 21300000, guid: fd1ff2971dd04304cac8f9f829d2a1a8, type: 3}
+  - {fileID: 21300000, guid: 023219535a0f79644a33fad9dfe66fb5, type: 3}
+  - {fileID: 21300000, guid: 2b11e7fb0cf9bff458b8ada39cc5db76, type: 3}
+  - {fileID: 21300000, guid: 3caa0e5350f74664fbbb25ed4cc296d1, type: 3}
+  - {fileID: 21300000, guid: 471da93ec3bfd3f409227009d60d2888, type: 3}
+  - {fileID: 21300000, guid: 68bbec26831d2fc4fabbd5633824e11a, type: 3}
+  - {fileID: 21300000, guid: ac6ef5707fbdb5f4f9488b7f9d23ecff, type: 3}
+  - {fileID: 21300000, guid: 7bad3d445735bb345b7f1545df5155fe, type: 3}
+  - {fileID: 21300000, guid: ef9d645e27be23540a74d03312cda7f4, type: 3}
+  - {fileID: 21300000, guid: c712b2c6c05d57c46b8b6114e4566ecf, type: 3}
+  - {fileID: 21300000, guid: 1c0a5ef6836ee134b9819f55e04c639e, type: 3}
+  - {fileID: 21300000, guid: 81240e04c3316544991ea99c0c5ce5d8, type: 3}
+  - {fileID: 21300000, guid: ff5a0d1bf43d37a44bf3146670e07b66, type: 3}
+  - {fileID: 21300000, guid: 1306da1a771fe7040b408bf620b63468, type: 3}
+  - {fileID: 21300000, guid: c11bae73799e2da4a891961eb31f7196, type: 3}
+  - {fileID: 21300000, guid: 77d901834cb83ac41a87c357641826ad, type: 3}
+  - {fileID: 21300000, guid: 8d3e3031425c8604e801e80885df87e3, type: 3}
+  - {fileID: 21300000, guid: 06c85e6a51216984e951d9cff36141d6, type: 3}
+  - {fileID: 21300000, guid: 830201fa49b6b5c4d979bb00d5a73d7b, type: 3}
+  - {fileID: 21300000, guid: f95010ef4f98d4a43a1e505ef03b82b2, type: 3}
+  - {fileID: 21300000, guid: 0f5e21cd11396e84eb384464d4ddda8d, type: 3}
+  - {fileID: 21300000, guid: d79d4e2b4a26ef74cb6dcfafef58c6cc, type: 3}
+  - {fileID: 21300000, guid: 65815bc338f552949b97f82c67c5107f, type: 3}
+  - {fileID: 21300000, guid: 73d9c3a5a833b754aa3b1b26b340d255, type: 3}
+  - {fileID: 21300000, guid: af458cc3c9871424b8597ad74dc4e914, type: 3}
+  - {fileID: 21300000, guid: 1f0a2a12648c3c64db06741cf008591e, type: 3}
+  - {fileID: 21300000, guid: d261eb08e11147746bd991c9ec02e71a, type: 3}
+  - {fileID: 21300000, guid: 8fdf6f75a58d1254093053f25402b853, type: 3}
+  - {fileID: 21300000, guid: 780bf262eb972ec49ba53e9d424fd2fe, type: 3}
+  - {fileID: 21300000, guid: fef59b958d2c7b04a953bb102c8d3aae, type: 3}
+  - {fileID: 21300000, guid: 27a1b610856b5f2429ee40ce17408e14, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ribbon1
+  - ribbon3
+  - ribbon2
+  - ribbon5
+  - ribbon4
+  - ribbon6
+  - giftbox_white_pink
+  - giftbox_red_pink
+  - giftbox_red_green
+  - giftbox_blue_pink
+  - giftbox_pink_red
+  - giftbox_blue_yellow
+  - giftbox_yellow_white
+  - giftbox_white_red
+  - giftbox_red_blue
+  - giftbox_green_white
+  - giftbox_green_blue
+  - giftbox_pink_green
+  - giftbox_red_white
+  - giftbox_blue_white
+  - giftbox_blue_red
+  - giftbox_yellow_pink
+  - giftbox_yellow_red
+  - giftbox_red_yellow
+  - giftbox_green_pink
+  - giftbox_white_yellow
+  - giftbox_white_blue
+  - giftbox_pink_yellow
+  - giftbox_pink_white
+  - giftbox_yellow_blue
+  - giftbox_blue_green
+  - giftbox_pink_blue
+  - giftbox_white_green
+  - giftbox_green_yellow
+  - giftbox_green_red
+  - eye8
+  - eye3
+  - eye1
+  - eye6
+  - eye7
+  - eye5
+  - eye2
+  - mouth1
+  - eye4
+  m_Tag: Gifts
+  m_IsVariant: 0
