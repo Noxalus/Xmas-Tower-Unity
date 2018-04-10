@@ -54,6 +54,8 @@ public class Gift : MonoBehaviour
         LeftEye.sprite = defaultEyeSprite;
         RightEye.sprite = defaultEyeSprite;
         Mouth.sprite = defaultMouthSprite;
+
+        transform.localScale *= Random.Range(1, 5);
     }
 
     private string GetCorrespondingRibbon(string bodySpriteName)
