@@ -10,31 +10,27 @@ public class GameManager : MonoBehaviour {
 
     private Gift currentGift = null;
 
+    private new Camera camera;
 
-    private Camera camera;
-
-	void Start ()
+    void Start ()
     {
-        Debug.Log("Screen Width : " + Screen.width);
-        Debug.Log("Screen Height : " + Screen.height);
-
         camera = Camera.main;
 
         if (!isGameScreen)
-            AddGift(new Vector2(0, 0));
+            AddGift(Vector2.zero);
     }
 
     public Gift AddGift(Vector2 position)
     {
         var gift = Instantiate(giftPrefab) as Gift;
-        gift.Initialize(giftSpriteAtlas);
-
-        gift.transform.position = new Vector2(
-            position.x,
-            position.y
-        );
-
+        gift.Initialize(giftSpriteAtlas, isGameScreen);
+        gift.transform.position = position;
         return gift;
+    }
+
+    public void AddDummyGift()
+    {
+        AddGift(Vector2.zero);
     }
 
 	void Update ()

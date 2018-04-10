@@ -48,6 +48,7 @@ public class Gift : MonoBehaviour
     private SpriteRenderer Mouth;
 
     private Rigidbody2D rigidBody;
+    private bool canSleep;
     private GiftState currentState;
 
     void Awake()
@@ -64,8 +65,9 @@ public class Gift : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    public void Initialize(SpriteAtlas spriteAtlas)
+    public void Initialize(SpriteAtlas spriteAtlas, bool canSleep = true)
     {
+        this.canSleep = canSleep;
         currentState = GiftState.IDLE;
 
         var defaultEyeSprite = spriteAtlas.GetSprite(EyeSpriteType[0]);
@@ -83,10 +85,14 @@ public class Gift : MonoBehaviour
 
     void Update()
     {
+        if (currentState == GiftState.IDLE && !rigidBody.IsSleeping())
+            rigidBody.Sleep();
+
+
         if (currentState == GiftState.COLLISIONING && rigidBody.IsSleeping())
         {
-            //Body.color = Color.green;
-            currentState = GiftState.SLEEPING;
+            if (canSleep)
+                currentState = GiftState.SLEEPING;
         }
     }
 
@@ -94,6 +100,11 @@ public class Gift : MonoBehaviour
     {
         Debug.Log("Collision!");
         currentState = GiftState.COLLISIONING;
+    }
+
+    public void Select()
+    {
+        currentState = GiftState.SELECTED;
     }
 
     public GiftState GetCurrentState()

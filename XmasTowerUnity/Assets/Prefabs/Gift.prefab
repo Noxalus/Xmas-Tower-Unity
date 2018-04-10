@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 61604266912404222}
   - component: {fileID: 50425437202291934}
   - component: {fileID: 114458872207600498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 2
