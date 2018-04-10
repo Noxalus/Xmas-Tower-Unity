@@ -14,11 +14,21 @@ public class DragObject2D : MonoBehaviour
             return;
 
         RaycastHit2D hit = Physics2D.Raycast(
-             Camera.main.ScreenToWorldPoint(Input.mousePosition),
-            Vector2.zero
+            Camera.main.ScreenToWorldPoint(Input.mousePosition),
+            Vector2.zero,
+            0f,
+            LayerMask.GetMask("Gift")
         );
 
+        if (hit.transform == null || hit.transform.gameObject != gameObject)
+            return;
+
         if (hit.collider == null || !hit.rigidbody || hit.rigidbody.isKinematic)
+            return;
+
+        var selectedGift = hit.transform.gameObject.GetComponent<Gift>();
+
+        if (!selectedGift || selectedGift.GetCurrentState() == Gift.GiftState.SLEEPING)
             return;
 
         if (!targetJoint)

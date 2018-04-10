@@ -3,6 +3,19 @@ using UnityEngine.U2D;
 
 public class Gift : MonoBehaviour
 {
+    public enum GiftState
+    {
+        IDLE,
+        SELECTED,
+        FALLING,
+        COLLISIONING,
+        SLEEPING,
+        SICK,
+        ANGRY,
+        POUTING,
+        HURT
+    }
+
     public static readonly string[] BodySpriteType = new string[]
     {
         "giftbox_blue_green", "giftbox_blue_pink", "giftbox_blue_red", "giftbox_blue_white", "giftbox_blue_yellow",
@@ -34,6 +47,9 @@ public class Gift : MonoBehaviour
     private SpriteRenderer RightEye;
     private SpriteRenderer Mouth;
 
+    private Rigidbody2D rigidBody;
+    private GiftState currentState;
+
     void Awake()
     {
         Body = transform.Find("Body").gameObject.GetComponent<SpriteRenderer>();
@@ -43,8 +59,15 @@ public class Gift : MonoBehaviour
         Mouth = transform.Find("Mouth").gameObject.GetComponent<SpriteRenderer>();
     }
 
+    void Start()
+    {
+        rigidBody = GetComponent<Rigidbody2D>();
+    }
+
     public void Initialize(SpriteAtlas spriteAtlas)
     {
+        currentState = GiftState.IDLE;
+
         var defaultEyeSprite = spriteAtlas.GetSprite(EyeSpriteType[0]);
         var defaultMouthSprite = spriteAtlas.GetSprite(MouthSpriteType[0]);
         var randomBodySpriteName = BodySpriteType[Random.Range(0, BodySpriteType.Length - 1)];
@@ -58,9 +81,24 @@ public class Gift : MonoBehaviour
         transform.localScale *= Random.Range(1, 5);
     }
 
+    void Update()
+    {
+        if (currentState == GiftState.COLLISIONING && rigidBody.IsSleeping())
+        {
+            //Body.color = Color.green;
+            currentState = GiftState.SLEEPING;
+        }
+    }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision!");
+        currentState = GiftState.COLLISIONING;
+    }
+
+    public GiftState GetCurrentState()
+    {
+        return currentState;
     }
 
     #region Utils

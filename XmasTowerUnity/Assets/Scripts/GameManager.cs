@@ -50,5 +50,8 @@ public class GameManager : MonoBehaviour {
             var giftSpawnOffset = 1 + (giftCollider.bounds.max.y / 2);
             currentGift.transform.position = new Vector2(0, (cameraBounds.size.y / 2) - giftSpawnOffset);
         }
+
+        if (currentGift.GetCurrentState() == Gift.GiftState.SLEEPING)
+            currentGift = null;
     }
 }
