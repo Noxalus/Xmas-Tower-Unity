@@ -80,7 +80,7 @@ public class Gift : MonoBehaviour
         RightEye.sprite = defaultEyeSprite;
         Mouth.sprite = defaultMouthSprite;
 
-        transform.localScale *= Random.Range(1, 5);
+        transform.localScale *= Random.Range(5, 5);
     }
 
     void Update()
