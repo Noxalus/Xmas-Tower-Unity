@@ -26,6 +26,8 @@ public class DragObject2D : MonoBehaviour
             targetJoint = gameObject.AddComponent<TargetJoint2D>();
             targetJoint.dampingRatio = dampingRatio;
             targetJoint.frequency = frequency;
+
+            hit.rigidbody.gravityScale = 1;
         }
 
         targetJoint.anchor = transform.InverseTransformPoint(hit.point);

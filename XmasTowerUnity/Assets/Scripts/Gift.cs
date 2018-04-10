@@ -58,6 +58,12 @@ public class Gift : MonoBehaviour
         transform.localScale *= Random.Range(1, 5);
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision!");
+    }
+
+    #region Utils
     private string GetCorrespondingRibbon(string bodySpriteName)
     {
         if (bodySpriteName.EndsWith("_pink"))
@@ -75,4 +81,5 @@ public class Gift : MonoBehaviour
 
         return RibbonSpriteType[0];
     }
+    #endregion
 }
