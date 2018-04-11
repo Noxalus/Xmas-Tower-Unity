@@ -17,6 +17,11 @@ public class MusicManager : MonoBehaviour {
 
         if (isGameScreen)
             StartCoroutine(playGameMusic());
+        else
+        {
+            audioSource.clip = MenuMusic;
+            audioSource.Play();
+        }
 	}
 
     private IEnumerator playGameMusic()
