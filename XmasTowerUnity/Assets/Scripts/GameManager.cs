@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour {
     private new Camera camera;
     private Vector3 cameraStartPosition;
     private Vector3 cameraTargetPosition;
-    private float cameraInterpolationThreshold = 0.1f;
-    private float cameraInterpolationSmoothness = 0.05f;
+    private float cameraInterpolationThreshold = Config.CAMERA_INTERPOLATION_THRESHOLD;
+    private float cameraInterpolationSmoothness = Config.CAMERA_INTERPOLATION_SMOOTHNESS;
     private bool cameraIsMoving;
 
     private Gift currentGift = null;

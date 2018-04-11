@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
+using UnityEngine;
 using UnityEngine.U2D;
 
 public class Gift : MonoBehaviour
@@ -80,7 +81,7 @@ public class Gift : MonoBehaviour
         RightEye.sprite = defaultEyeSprite;
         Mouth.sprite = defaultMouthSprite;
 
-        transform.localScale *= Random.Range(5, 5);
+        transform.localScale *= Random.Range(Config.MIN_GIFT_SCALE_SIZE, Config.MAX_GIFT_SCALE_SIZE);
     }
 
     void Update()
