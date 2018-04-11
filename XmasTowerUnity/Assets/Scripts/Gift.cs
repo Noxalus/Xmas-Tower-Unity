@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.U2D;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Gift : MonoBehaviour
 {
     public enum GiftState
@@ -54,16 +55,13 @@ public class Gift : MonoBehaviour
 
     void Awake()
     {
+        rigidBody = GetComponent<Rigidbody2D>();
+
         Body = transform.Find("Body").gameObject.GetComponent<SpriteRenderer>();
         Ribbon = transform.Find("Ribbon").gameObject.GetComponent<SpriteRenderer>();
         LeftEye = transform.Find("LeftEye").gameObject.GetComponent<SpriteRenderer>();
         RightEye = transform.Find("RightEye").gameObject.GetComponent<SpriteRenderer>();
         Mouth = transform.Find("Mouth").gameObject.GetComponent<SpriteRenderer>();
-    }
-
-    void Start()
-    {
-        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     public void Initialize(SpriteAtlas spriteAtlas, bool canSleep = true)
@@ -81,7 +79,10 @@ public class Gift : MonoBehaviour
         RightEye.sprite = defaultEyeSprite;
         Mouth.sprite = defaultMouthSprite;
 
-        transform.localScale *= Random.Range(Config.MIN_GIFT_SCALE_SIZE, Config.MAX_GIFT_SCALE_SIZE);
+        var randomScale = Random.Range(Config.MIN_GIFT_SCALE_SIZE, Config.MAX_GIFT_SCALE_SIZE);
+        transform.localScale *= randomScale;
+
+        rigidBody.mass *= randomScale;
     }
 
     void Update()

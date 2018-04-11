@@ -74,6 +74,8 @@ public class GameManager : MonoBehaviour {
             HighscoreBar.SetActive(true);
             var highscoreBarHeightPosition = highscore + groundLevel;
             HighscoreBar.transform.position = new Vector3(HighscoreBar.transform.position.x, highscoreBarHeightPosition, HighscoreBar.transform.position.z);
+
+            camera.GetComponent<CameraDrag>().SetDragHeightLimit(highscore);
         }
         else
             HighscoreBar.SetActive(false);
@@ -117,7 +119,7 @@ public class GameManager : MonoBehaviour {
             if (currentGiftHighestPoint > currentHeight)
             {
                 currentHeight = currentGiftHighestPoint;
-                scoreText.text = (currentHeight * Config.SCORE_FACTOR).ToString("0.0") + " cm (best: " + (PlayerPrefs.GetFloat("Highscore", 0f) * Config.SCORE_FACTOR).ToString("0.0") + " cm)";
+                scoreText.text = (currentHeight * Config.SCORE_FACTOR).ToString("0.0") + " cm";
 
                 // Store the highscore
                 if (currentHeight > PlayerPrefs.GetFloat("Highscore", 0f))
@@ -142,10 +144,11 @@ public class GameManager : MonoBehaviour {
         // Check only the current selected gift for now
         if (currentGift)
         {
-            var giftScreenPosition = camera.WorldToScreenPoint(currentGift.transform.position);
             var cameraBounds = camera.OrthographicBounds();
 
-            if (currentGift.transform.position.y < -cameraBounds.extents.y || giftScreenPosition.x < 0 || giftScreenPosition.x > camera.pixelWidth)
+            if (currentGift.transform.position.y < -cameraBounds.extents.y ||
+                currentGift.transform.position.x < -cameraBounds.extents.x ||
+                currentGift.transform.position.x > cameraBounds.extents.x)
                 GameOver();
         }
     }
