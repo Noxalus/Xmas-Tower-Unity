@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public Text scoreText;
     public GameObject ground;
     public MenuManager MenuManager;
+    public SpriteRenderer HighscoreBar;
 
     // Camera
     private new Camera camera;
@@ -29,11 +30,14 @@ public class GameManager : MonoBehaviour {
     private float groundLevel;
     private bool gameIsOver;
 
+    private float highscore;
+
     void Start ()
     {
         gifts = new List<Gift>();
         camera = Camera.main;
 
+        highscore = PlayerPrefs.GetFloat("Highscore", 0);
 
         if (!isGameScreen)
             AddGift();
@@ -64,6 +68,16 @@ public class GameManager : MonoBehaviour {
         gameIsOver = false;
 
         MenuManager.ShowGameOverButtons(false);
+
+        if (highscore > 0)
+        {
+            HighscoreBar.enabled = true;
+            var highscoreBarHeightPosition = highscore + groundLevel;
+            HighscoreBar.transform.position = new Vector3(HighscoreBar.transform.position.x, highscoreBarHeightPosition, HighscoreBar.transform.position.z);
+        }
+        else
+            HighscoreBar.enabled = false;
+
     }
 
     public Gift AddGift()
@@ -103,7 +117,16 @@ public class GameManager : MonoBehaviour {
             if (currentGiftHighestPoint > currentHeight)
             {
                 currentHeight = currentGiftHighestPoint;
-                scoreText.text = (currentHeight * Config.SCORE_FACTOR).ToString("0.0") + " cm";
+                scoreText.text = (currentHeight * Config.SCORE_FACTOR).ToString("0.0") + " cm (best: " + (PlayerPrefs.GetFloat("Highscore", 0f) * Config.SCORE_FACTOR).ToString("0.0") + " cm)";
+
+                // Store the highscore
+                if (currentHeight > PlayerPrefs.GetFloat("Highscore", 0f))
+                {
+                    highscore = currentHeight;
+                    PlayerPrefs.SetFloat("Highscore", highscore);
+                    PlayerPrefs.Save();
+                }
+
                 UpdateCameraPosition();
             }
 
