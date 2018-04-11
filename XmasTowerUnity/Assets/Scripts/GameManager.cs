@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour {
             var highscoreBarHeightPosition = highscore + groundLevel;
             HighscoreBar.transform.position = new Vector3(HighscoreBar.transform.position.x, highscoreBarHeightPosition, HighscoreBar.transform.position.z);
 
+            HighscoreBar.GetComponentInChildren<Text>().text = "Best: " + GetHighscore();
             camera.GetComponent<CameraDrag>().SetDragHeightLimit(highscore);
         }
         else
@@ -98,6 +99,16 @@ public class GameManager : MonoBehaviour {
         AddGift();
     }
 
+    private string GetCurrentScore()
+    {
+        return (currentHeight * Config.SCORE_FACTOR).ToString("0.0") + " cm";
+    }
+
+    private string GetHighscore()
+    {
+        return (highscore * Config.SCORE_FACTOR).ToString("0.0") + " cm";
+    }
+
     void Update ()
     {
         if (!isGameScreen || gameIsOver)
@@ -119,7 +130,7 @@ public class GameManager : MonoBehaviour {
             if (currentGiftHighestPoint > currentHeight)
             {
                 currentHeight = currentGiftHighestPoint;
-                scoreText.text = (currentHeight * Config.SCORE_FACTOR).ToString("0.0") + " cm";
+                scoreText.text = GetCurrentScore();
 
                 // Store the highscore
                 if (currentHeight > PlayerPrefs.GetFloat("Highscore", 0f))
