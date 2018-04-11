@@ -112,6 +112,25 @@ public class Gift : MonoBehaviour
         return currentState;
     }
 
+    public float GetHighestPoint()
+    {
+        var collider = GetComponent<BoxCollider2D>();
+
+        // World space corner of the collider
+        Vector3 bottomLeftCorner = collider.bounds.center - collider.bounds.extents;
+        Vector3 topRightCorner = collider.bounds.center + collider.bounds.extents;
+        Vector3 bottomRightCorner = new Vector2(
+            collider.bounds.center.x + collider.bounds.extents.x,
+            collider.bounds.center.y - collider.bounds.extents.y
+        );
+        Vector3 topLeftCorner = new Vector2(
+            collider.bounds.center.x - collider.bounds.extents.x,
+            collider.bounds.center.y + collider.bounds.extents.y
+        );
+
+        return Mathf.Max(bottomLeftCorner.y, topRightCorner.y, bottomRightCorner.y, topLeftCorner.y);
+    }
+
     #region Utils
     private string GetCorrespondingRibbon(string bodySpriteName)
     {
