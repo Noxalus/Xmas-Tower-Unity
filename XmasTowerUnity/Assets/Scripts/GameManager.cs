@@ -136,6 +136,10 @@ public class GameManager : MonoBehaviour {
         cameraTargetPosition = new Vector3(0f, 0f, camera.transform.position.z);
         cameraIsMoving = true;
 
+        // Stop gifts physics
+        foreach (var gift in gifts)
+            gift.ForceSleep(true);
+
         // TODO: When camera has stopped to move
         MenuManager.ShowGameOverButtons();
     }

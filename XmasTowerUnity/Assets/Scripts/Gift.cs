@@ -96,10 +96,15 @@ public class Gift : MonoBehaviour
         }
     }
 
-    public void ForceSleep()
+    public void ForceSleep(bool stopPhysics = false)
     {
         if (rigidBody)
+        {
+            if (stopPhysics)
+                rigidBody.isKinematic = true;
+
             rigidBody.Sleep();
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
