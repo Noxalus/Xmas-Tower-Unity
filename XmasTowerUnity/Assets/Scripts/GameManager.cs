@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
     public Text scoreText;
     public GameObject ground;
     public MenuManager MenuManager;
-    public SpriteRenderer HighscoreBar;
+    public GameObject HighscoreBar;
 
     // Camera
     private new Camera camera;
@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour {
 
         if (highscore > 0)
         {
-            HighscoreBar.enabled = true;
+            HighscoreBar.SetActive(true);
             var highscoreBarHeightPosition = highscore + groundLevel;
             HighscoreBar.transform.position = new Vector3(HighscoreBar.transform.position.x, highscoreBarHeightPosition, HighscoreBar.transform.position.z);
         }
         else
-            HighscoreBar.enabled = false;
+            HighscoreBar.SetActive(false);
 
     }
 
