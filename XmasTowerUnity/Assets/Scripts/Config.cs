@@ -3,7 +3,7 @@
     public static class Config
     {
         // Gifts
-        public static readonly float MIN_GIFT_SCALE_SIZE = 1f;
+        public static readonly float MIN_GIFT_SCALE_SIZE = 5f;
         public static readonly float MAX_GIFT_SCALE_SIZE = 5f;
 
         // Camera
