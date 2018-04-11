@@ -9,5 +9,8 @@
         // Camera
         public static readonly float CAMERA_INTERPOLATION_THRESHOLD = 0.1f;
         public static readonly float CAMERA_INTERPOLATION_SMOOTHNESS = 0.05f;
+
+        // Score
+        public static readonly float SCORE_FACTOR = 5f; // Trying to have a consistent value between tower height and centimeters
     }
 }

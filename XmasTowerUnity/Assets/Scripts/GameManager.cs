@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour {
             if (currentGiftHighestPoint > currentHeight)
             {
                 currentHeight = currentGiftHighestPoint;
-                scoreText.text = currentHeight.ToString("0.0") + " cm";
+                scoreText.text = (currentHeight * Config.SCORE_FACTOR).ToString("0.0") + " cm";
                 UpdateCameraPosition();
             }
 
