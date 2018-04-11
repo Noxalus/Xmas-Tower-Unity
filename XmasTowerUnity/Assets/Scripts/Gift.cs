@@ -87,8 +87,7 @@ public class Gift : MonoBehaviour
     void Update()
     {
         if (currentState == GiftState.IDLE && !rigidBody.IsSleeping())
-            rigidBody.Sleep();
-
+            ForceSleep();
 
         if (currentState == GiftState.COLLISIONING && rigidBody.IsSleeping())
         {
@@ -97,9 +96,14 @@ public class Gift : MonoBehaviour
         }
     }
 
+    public void ForceSleep()
+    {
+        if (rigidBody)
+            rigidBody.Sleep();
+    }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision!");
         currentState = GiftState.COLLISIONING;
     }
 

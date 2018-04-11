@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public Gift giftPrefab;
     public Text scoreText;
     public GameObject ground;
+    public MenuManager MenuManager;
 
     // Camera
     private new Camera camera;
@@ -20,24 +22,48 @@ public class GameManager : MonoBehaviour {
     private float cameraInterpolationSmoothness = Config.CAMERA_INTERPOLATION_SMOOTHNESS;
     private bool cameraIsMoving;
 
+    private List<Gift> gifts;
     private Gift currentGift = null;
     private BoxCollider2D currentGiftCollider = null;
     private float currentHeight = 0f;
     private float groundLevel;
+    private bool gameIsOver;
 
     void Start ()
     {
+        gifts = new List<Gift>();
         camera = Camera.main;
-        cameraTargetPosition = camera.transform.position;
+
 
         if (!isGameScreen)
             AddGift(Vector2.zero);
-
-        if (ground)
+        else
         {
-            var groundCollider = ground.GetComponentInChildren<BoxCollider2D>();
-            groundLevel = groundCollider.bounds.center.y + groundCollider.bounds.extents.y;
+            if (ground)
+            {
+                var groundCollider = ground.GetComponentInChildren<BoxCollider2D>();
+                groundLevel = groundCollider.bounds.center.y + groundCollider.bounds.extents.y;
+            }
+
+            Restart();
         }
+    }
+
+    public void Restart()
+    {
+        foreach (var gift in gifts)
+            Destroy(gift.gameObject);
+
+        gifts.Clear();
+
+        currentGift = null;
+        currentGiftCollider = null;
+        scoreText.text = "0 cm";
+        currentHeight = 0f;
+
+        gameIsOver = false;
+
+        MenuManager.ShowGameOverButtons(false);
     }
 
     public Gift AddGift(Vector2 position)
@@ -45,6 +71,9 @@ public class GameManager : MonoBehaviour {
         var gift = Instantiate(giftPrefab) as Gift;
         gift.Initialize(giftSpriteAtlas, isGameScreen);
         gift.transform.position = position;
+
+        gifts.Add(gift);
+
         return gift;
     }
 
@@ -56,7 +85,7 @@ public class GameManager : MonoBehaviour {
 
 	void Update ()
     {
-        if (!isGameScreen)
+        if (!isGameScreen || gameIsOver)
             return;
 
         if (!currentGift && !cameraIsMoving)
@@ -82,6 +111,34 @@ public class GameManager : MonoBehaviour {
             currentGift = null;
             currentGiftCollider = null;
         }
+
+        CheckGameOver();
+    }
+
+    private void CheckGameOver()
+    {
+        // Check only the current selected gift for now
+        if (currentGift)
+        {
+            var giftScreenPosition = camera.WorldToScreenPoint(currentGift.transform.position);
+            var cameraBounds = camera.OrthographicBounds();
+
+            if (currentGift.transform.position.y < -cameraBounds.extents.y || giftScreenPosition.x < 0 || giftScreenPosition.x > camera.pixelWidth)
+                GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        gameIsOver = true;
+        currentGift.ForceSleep();
+
+        // Make sure to reset the camera to the origin
+        cameraTargetPosition = new Vector3(0f, 0f, camera.transform.position.z);
+        cameraIsMoving = true;
+
+        // TODO: When camera has stopped to move
+        MenuManager.ShowGameOverButtons();
     }
 
     private void UpdateCameraPosition()
