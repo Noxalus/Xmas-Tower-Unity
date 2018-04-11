@@ -7,7 +7,8 @@ public class MenuManager : MonoBehaviour
 
     public void Start()
     {
-        ShowGameOverButtons(false);
+        if (GameOverUI)
+            ShowGameOverButtons(false);
     }
 
     public void ShowGameOverButtons(bool value = true)

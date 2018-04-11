@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 
 
         if (!isGameScreen)
-            AddGift(Vector2.zero);
+            AddGift();
         else
         {
             if (ground)
@@ -66,21 +66,14 @@ public class GameManager : MonoBehaviour {
         MenuManager.ShowGameOverButtons(false);
     }
 
-    public Gift AddGift(Vector2 position)
+    public Gift AddGift()
     {
         var gift = Instantiate(giftPrefab) as Gift;
         gift.Initialize(giftSpriteAtlas, isGameScreen);
-        gift.transform.position = position;
 
         gifts.Add(gift);
 
         return gift;
-    }
-
-    // Used by hidden spawn button's OnClick event
-    public void AddDummyGift()
-    {
-        AddGift(Vector2.zero);
     }
 
 	void Update ()
@@ -91,7 +84,7 @@ public class GameManager : MonoBehaviour {
         if (!currentGift && !cameraIsMoving)
         {
             var cameraBounds = camera.OrthographicBounds();
-            currentGift = AddGift(Vector2.zero);
+            currentGift = AddGift();
             currentGiftCollider = currentGift.GetComponent<BoxCollider2D>();
             var giftSpawnOffset = 1 + (currentGiftCollider.bounds.max.y / 2);
             currentGift.transform.position = new Vector2(0, (camera.transform.position.y + cameraBounds.size.y / 2) - giftSpawnOffset);
