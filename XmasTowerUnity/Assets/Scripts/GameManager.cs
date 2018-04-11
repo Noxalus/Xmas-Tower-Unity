@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour {
             currentGift = AddGift();
             currentGiftCollider = currentGift.GetComponent<BoxCollider2D>();
             var giftSpawnOffset = 1 + (currentGiftCollider.bounds.max.y / 2);
-            currentGift.transform.position = new Vector2(0, (camera.transform.position.y + cameraBounds.size.y / 6) - giftSpawnOffset);
+            currentGift.transform.position = new Vector2(0, (camera.transform.position.y + cameraBounds.size.y / 2) - giftSpawnOffset);
         }
 
         if (currentGift && currentGift.GetCurrentState() == Gift.GiftState.SLEEPING)

@@ -9,7 +9,6 @@ public class MusicManager : MonoBehaviour {
     public AudioClip GameLoopMusic;
 
     private AudioSource audioSource;
-    private bool isPlayingIntro;
 
     void Start () {
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -28,13 +27,11 @@ public class MusicManager : MonoBehaviour {
     {
         audioSource.clip = GameIntroMusic;
         audioSource.Play();
-        isPlayingIntro = true;
 
         yield return new WaitForSeconds(audioSource.clip.length);
 
         audioSource.clip = GameLoopMusic;
         audioSource.Play();
-        isPlayingIntro = false;
     }
 
 }
