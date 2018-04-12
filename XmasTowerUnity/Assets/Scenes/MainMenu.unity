@@ -231,6 +231,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   ground: {fileID: 0}
   MenuManager: {fileID: 0}
+  HighscoreBar: {fileID: 0}
 --- !u!114 &253278859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,7 +863,7 @@ GameObject:
   - component: {fileID: 1684034825}
   - component: {fileID: 1684034824}
   - component: {fileID: 1684034823}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PhysicsBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
