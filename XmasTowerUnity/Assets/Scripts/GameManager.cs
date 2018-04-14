@@ -72,8 +72,8 @@ public class GameManager : MonoBehaviour {
         if (highscore > 0)
         {
             HighscoreBar.SetActive(true);
-            var highscoreBarHeightPosition = highscore + groundLevel;
-            HighscoreBar.transform.position = new Vector3(HighscoreBar.transform.position.x, highscoreBarHeightPosition, HighscoreBar.transform.position.z);
+
+            UpdateHighscoreBarPosition(highscore);
 
             HighscoreBar.GetComponentInChildren<Text>().text = "Best: " + GetHighscore();
             camera.GetComponent<CameraDrag>().SetDragHeightLimit(highscore);
@@ -109,6 +109,13 @@ public class GameManager : MonoBehaviour {
         return (highscore * Config.SCORE_FACTOR).ToString("0.0") + " cm";
     }
 
+    private void UpdateHighscoreBarPosition(float score)
+    {
+        var highscoreBarHeightPosition = HighscoreBar.transform.position;
+        highscoreBarHeightPosition.y = score + groundLevel;
+        HighscoreBar.transform.position = highscoreBarHeightPosition;
+    }
+
     void Update ()
     {
         if (!isGameScreen || gameIsOver)
@@ -127,28 +134,40 @@ public class GameManager : MonoBehaviour {
             );
         }
 
-        if (currentGift && currentGift.GetCurrentState() == Gift.GiftState.SLEEPING)
+        if (currentGift)
         {
-            var currentGiftHighestPoint = currentGift.GetHighestPoint() - groundLevel;
-
-            if (currentGiftHighestPoint > currentHeight)
+            if (currentGift.GetCurrentState() == Gift.GiftState.SLEEPING)
             {
-                currentHeight = currentGiftHighestPoint;
-                scoreText.text = GetCurrentScore();
+                var currentGiftHighestPoint = currentGift.GetHighestPoint() - groundLevel;
 
-                // Store the highscore
-                if (currentHeight > PlayerPrefs.GetFloat("Highscore", 0f))
+                if (currentGiftHighestPoint > currentHeight)
                 {
-                    highscore = currentHeight;
-                    PlayerPrefs.SetFloat("Highscore", highscore);
-                    PlayerPrefs.Save();
+                    currentHeight = currentGiftHighestPoint;
+                    scoreText.text = GetCurrentScore();
+
+                    // Store the highscore
+                    if (currentHeight > PlayerPrefs.GetFloat("Highscore", 0f))
+                    {
+                        highscore = currentHeight;
+                        PlayerPrefs.SetFloat("Highscore", highscore);
+                        PlayerPrefs.Save();
+                    }
+
+                    UpdateCameraPosition();
                 }
 
-                UpdateCameraPosition();
+                currentGift = null;
+                currentGiftCollider = null;
             }
+            else if (currentGift.GetCurrentState() == Gift.GiftState.COLLISIONING)
+            {
+                var currentGiftHighestPoint = currentGift.GetHighestPoint() - groundLevel;
 
-            currentGift = null;
-            currentGiftCollider = null;
+                if (currentGiftHighestPoint > highscore)
+                    UpdateHighscoreBarPosition(currentGiftHighestPoint);
+                else
+                    UpdateHighscoreBarPosition(highscore);
+            }
         }
 
         CheckGameOver();
