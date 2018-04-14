@@ -90,7 +90,7 @@ public class Gift : MonoBehaviour
         if (currentState == GiftState.IDLE && !rigidBody.IsSleeping())
             ForceSleep();
 
-        if (currentState == GiftState.COLLISIONING && rigidBody.IsSleeping())
+        if (currentState == GiftState.COLLISIONING && !Input.GetMouseButton(0)  && rigidBody.IsSleeping())
         {
             if (canSleep)
                 currentState = GiftState.SLEEPING;

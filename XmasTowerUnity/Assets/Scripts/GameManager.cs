@@ -120,7 +120,11 @@ public class GameManager : MonoBehaviour {
             currentGift = AddGift();
             currentGiftCollider = currentGift.GetComponent<BoxCollider2D>();
             var giftSpawnOffset = 1 + (currentGiftCollider.bounds.max.y / 2);
-            currentGift.transform.position = new Vector2(0, (camera.transform.position.y + cameraBounds.size.y / 2) - giftSpawnOffset);
+            currentGift.transform.position = new Vector3(
+                0,
+                (camera.transform.position.y + cameraBounds.size.y / 2) - giftSpawnOffset,
+                currentGift.transform.position.z
+            );
         }
 
         if (currentGift && currentGift.GetCurrentState() == Gift.GiftState.SLEEPING)
@@ -167,7 +171,6 @@ public class GameManager : MonoBehaviour {
     private void GameOver()
     {
         gameIsOver = true;
-        currentGift.ForceSleep();
 
         // Make sure to reset the camera to the origin
         cameraTargetPosition = new Vector3(0f, 0f, camera.transform.position.z);

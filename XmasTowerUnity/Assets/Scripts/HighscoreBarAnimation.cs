@@ -7,7 +7,7 @@ public class HighscoreBarAnimation : MonoBehaviour {
 
     void Update()
     {
-        var material = GetComponent<Renderer>().material;
+        var material = GetComponentInChildren<Renderer>().material;
         material.mainTextureOffset = new Vector2(Time.time * ScrollX, Time.time * ScrollY);
 	}
 }
